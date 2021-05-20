@@ -6,7 +6,11 @@
 </head>
 <body>
     <h1>Events</h1>
+
+    <nav th:replace="fragments :: navigation"></nav>
+
     <p th:unless="${events} and ${events.size()}">No events!</p>
+
     <th:block th:each = "event: ${events}">
         <li th:text = "${event}"></li>
     </th:block>
