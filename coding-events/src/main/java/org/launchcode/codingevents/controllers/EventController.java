@@ -1,5 +1,6 @@
 package org.launchcode.codingevents.controllers;
 
+import org.launchcode.codingevents.models.Event;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,7 @@ import java.util.List;
 public class EventController {
 
     //private static ArrayList<String> events =  new ArrayList<>(Arrays.asList("geekChat", "Coder Monkeys", "Programming Church"));
-    private static List<String> events = new ArrayList<>();
+    private static List<Event> events = new ArrayList<>();
 
 
     @GetMapping
@@ -31,8 +32,8 @@ public class EventController {
     }
 
     @PostMapping ("create")  // lives at events/create POST
-    public String createEvent(@RequestParam String eventName){
-        events.add(eventName);
+    public String createEvent(@RequestParam String eventName, String eventDescription){
+        events.add(new Event(eventName,eventDescription));
         return "redirect: ";
     }
 }
