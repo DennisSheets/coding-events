@@ -6,36 +6,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @Controller
 @RequestMapping ("events")
 public class EventController {
 
-    //private static ArrayList<String> events =  new ArrayList<>(Arrays.asList("geekChat", "Coder Monkeys", "Programming Church"));
-    //private static List<Event> events = new ArrayList<>();
-
-
     @GetMapping
     public String displayAllEvents(Model model){
-        model.addAttribute("title","Create Event");
+        model.addAttribute("title","All Events"); // updated title from create events to all events.   -- model binding branch
         model.addAttribute("events", EventData.getAll());
         return "events/index";
     }
 
-    @GetMapping ("create")   // lives at events/create GET
-    public String renderCreateEventsForm(){
+    @GetMapping ("create")
+    public String displayCreateEventsForm(Model model){
+        model.addAttribute("title","Create Events"); // added Model  model.att    Create Events title
         return "events/create";
     }
 
-    @PostMapping ("create")  // lives at events/create POST
-//    public String createEvent(@RequestParam String eventName, String eventDescription){
-//        EventData.add(new Event(eventName,eventDescription));
+    @PostMapping ("create")
     public String processCreateEvent(@ModelAttribute Event newEvent) {
         EventData.add(newEvent);
-        return "redirect: ";
+        return "redirect:";
     }
 
     @GetMapping ("delete")
@@ -54,4 +46,25 @@ public class EventController {
         }
         return "redirect:";
     }
+
+    @GetMapping ("/edit/{eventId}")
+        public String displayEditForm(Model model, @PathVariable int eventId) {
+        Event event = EventData.getId(eventId);
+        model.addAttribute("title","Edit Event " + eventId + "=ID");
+        model.addAttribute("event",event);
+
+        return "events/edit";
+    }
+
+    @PostMapping ("edit") // This location does not seem to exist - base on the form action  <form method="post" action="@{/events/edit}">
+    public String processEditForm(int eventId, String name, String description) {
+        Event event = EventData.getId(eventId);
+        event.setName(name);
+        event.setDescription(description);
+        return "redirect:";
+    }
+
+
+
+
 }

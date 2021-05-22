@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+    <header th:replace ="fragments :: header"></header>
+
+    <form method="post" th:action="@{/events/edit} ">  <!-- @{/events/edit} ,   FAILED /events/done-->
+
+        <input type="hidden" th:value="${event.id}" name="eventId" />
+
+            <span>
+                <label> ID:
+                    <th:block th:text = "${event.id}"></th:block>
+                </label><br>
+            </span>
+            <span>
+                <label>Current Name:
+                    <th:block th:text = "${event.name}"></th:block>
+                </label><br>
+              </span>
+            <span>
+                <label>Current Description:
+                    <th:block th:text = "${event.description}"></th:block>
+                </label><br>
+            </span>
+
+
+
+
+        <div class="form-group">
+            <label>Updated Name?
+                <input class="form=control" type="text" name="name">
+            </label><br>
+            <label>Updated Description?
+                <input class="form=control" type="text" name="description">
+            </label>
+        </div>
+        <div class="form-group">
+            <input class="btn btn-success" type="submit" value="Edit Event">
+        </div>
+    </form>
+</body>
+</html>
