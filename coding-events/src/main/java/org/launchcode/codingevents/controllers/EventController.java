@@ -24,17 +24,17 @@ public class EventController {
 
 
     @GetMapping ("create")
-    public String renderCreateEventsForm(Model model){
+    public String displayCreateEventsForm(Model model){
         model.addAttribute("title","Create Events");
+        model.addAttribute( new Event());
         return "events/create";
     }
 
     @PostMapping ("create")
 
-    public String processCreateEvent(@ModelAttribute @Valid Event newEvent, Errors errors, Model model) {
+    public String processCreateEventForm(@ModelAttribute @Valid Event newEvent, Errors errors, Model model) {
         if(errors.hasErrors()){
             model.addAttribute("title", "Create Events");
-            model.addAttribute("errorMsg", "You have bad data!");
             return "events/create";
         }
         EventData.add(newEvent);

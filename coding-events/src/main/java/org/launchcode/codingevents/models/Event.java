@@ -22,10 +22,14 @@ public class Event {
     private static int nextId = 1;
 
     public Event(String name, String description,String contactEmail) {
-
+        this();
         this.name = name;
-        this.description = name;
+        this.description = description;
         this.contactEmail = contactEmail;
+
+    }
+
+    public Event() {
         this.id = nextId;
         nextId++;
     }
@@ -51,11 +55,12 @@ public class Event {
         this.description = description;
     }
 
+
     public String getContactEmail() {
         return contactEmail;
     }
 
-    public void setContactEmail(String email) {
+    public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
     }
 
