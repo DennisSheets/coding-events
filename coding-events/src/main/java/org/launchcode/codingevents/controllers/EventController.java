@@ -6,16 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 
 @Controller
 @RequestMapping ("events")
 public class EventController {
-
-    //private static ArrayList<String> events =  new ArrayList<>(Arrays.asList("geekChat", "Coder Monkeys", "Programming Church"));
-    //private static List<Event> events = new ArrayList<>();
 
 
     @GetMapping
@@ -25,18 +20,19 @@ public class EventController {
         return "events/index";
     }
 
-    @GetMapping ("create")   // lives at events/create GET
+
+    @GetMapping ("create")
     public String renderCreateEventsForm(){
         return "events/create";
     }
 
-    @PostMapping ("create")  // lives at events/create POST
-//    public String createEvent(@RequestParam String eventName, String eventDescription){
-//        EventData.add(new Event(eventName,eventDescription));
+    @PostMapping ("create")
+
     public String processCreateEvent(@ModelAttribute Event newEvent) {
         EventData.add(newEvent);
         return "redirect: ";
     }
+
 
     @GetMapping ("delete")
     public String displayDeleteEventForm(Model model){
