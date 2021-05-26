@@ -3,15 +3,16 @@
 
     <head th:fragment="head">
         <meta charset="UTF-8"/>
+        <title>Coding Events</title>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
         <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
-        <title th:text = "${title}">Coding Events</title>
+
     </head>
 
     <body class="container">
 
         <header th:fragment="header">
-
+            <h1 th:text = "${title}">Please bind a title variable this page!</h1>
             <nav >
                 <ul class="nav">
                     <li class="nav-item"><a class="nav-link" href="/events">All Events</a></li>

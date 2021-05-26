@@ -7,15 +7,15 @@ import java.util.Objects;
 
 public class Event {
 
-    @Size(min=3, max=50, message="Name needs to be between 3 and 50 characters.")
-    @NotBlank
+    @Size(min=3, max=50, message = "Name needs to be between 3 and 50 characters.")
+    @NotBlank (message = "Name field must not be blank")
     private String name;
 
-    @Size(max=500, message="Description is too long.")
+    @Size(max=500, message = "Description is too long.")
     private String description;
 
-    @Email(message="Invalid email. Try again.")
-    @NotBlank
+    @Email( message = "Invalid email. Try again.")
+    @NotBlank (message = "Contact email must not be blank")
     private String contactEmail;
 
     private int id;
