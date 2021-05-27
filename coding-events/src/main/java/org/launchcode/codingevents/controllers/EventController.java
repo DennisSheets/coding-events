@@ -27,6 +27,7 @@ public class EventController {
     public String displayCreateEventsForm(Model model){
         model.addAttribute("title","Create Events");
         model.addAttribute( new Event());
+
         return "events/create";
     }
 
@@ -37,6 +38,8 @@ public class EventController {
             model.addAttribute("title", "Create Events");
             return "events/create";
         }
+
+        model.addAttribute("required","required");
         EventData.add(newEvent);
         return "redirect: ";
     }
