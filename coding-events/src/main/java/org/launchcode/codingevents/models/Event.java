@@ -18,6 +18,8 @@ public class Event {
     @NotBlank (message = "Contact email must not be blank")
     private String contactEmail;
 
+
+
     private int id;
     private static int nextId = 1;
 
