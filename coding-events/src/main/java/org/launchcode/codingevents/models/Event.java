@@ -17,6 +17,7 @@ public class Event extends AbstractEntity{
     @Size(max=500, message = "Description is too long.")
     private String description;
 
+
     @Email( message = "Invalid email. Try again.")
     @NotBlank (message = "Contact email must not be blank")
     private String contactEmail;
