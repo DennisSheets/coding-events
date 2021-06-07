@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity //Entity & Persistent Class  --- event objects can be stored outside the pro in a db
-public class Event {
+public class Event extends AbstractEntity{
 
     @Size(min=3, max=50, message = "Name needs to be between 3 and 50 characters.")
     @NotBlank (message = "Name field must not be blank")
@@ -24,9 +24,7 @@ public class Event {
 
     private EventType type;
 
-    @Id
-    @GeneratedValue
-    private int id;
+
 
     public Event(String name, String description,String contactEmail,EventType type) {
         this.name = name;
@@ -76,21 +74,6 @@ public class Event {
         this.type = type;
     }
 
-    public int getId() {
-        return id;
-    }
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Event event = (Event) o;
-        return id == event.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
