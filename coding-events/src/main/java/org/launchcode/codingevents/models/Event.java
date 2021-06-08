@@ -30,7 +30,8 @@ public class Event extends AbstractEntity{
     private final List<Tag> tags = new ArrayList<>();
 
 
-    public Event(String name, String description,String contactEmail,EventCategory eventCategory) {
+    //public Event(String name, String description,String contactEmail,EventCategory eventCategory) {
+    public Event(String name,EventCategory eventCategory) {
         this.name = name;
         this.eventCategory = eventCategory;
 
@@ -39,41 +40,25 @@ public class Event extends AbstractEntity{
     public Event() { }
 
     @Override
-    public String toString() {
-        return name;
-    }
+    public String toString() { return name; }
+
+     public void addTag(Tag tag){ this.tags.add(tag); }
 
 
+    public String getName() {return name;}
 
-    public void addTag(Tag tag){
-        this.tags.add(tag);
-    }
+    public void setName(String name) {this.name = name;}
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-     public EventCategory getEventCategory() {
-        return eventCategory;
-    }
+     public EventCategory getEventCategory() {return eventCategory;}
 
     public void setEventCategory(EventCategory eventCategory) {
-        this.eventCategory = eventCategory;
-    }
+        this.eventCategory = eventCategory;}
 
-    public EventDetails getEventDetails() {
-        return eventDetails;
-    }
-
-    public List<Tag> getTags() {
-        return tags;
-    }
+    public EventDetails getEventDetails() {return eventDetails;}
 
     public void setEventDetails(EventDetails eventDetails) {
         this.eventDetails = eventDetails;
     }
+
+    public List<Tag> getTags() { return tags;}
 }

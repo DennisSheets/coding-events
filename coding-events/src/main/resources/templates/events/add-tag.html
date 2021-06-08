@@ -9,16 +9,15 @@
         <div class="form-group">
 
             <input type="hidden" th:field="${eventTag.event}">
-
             <select th:field="${eventTag.tag}">
                 <option th:each="tag : ${tags}"
                         th:value="${tag.id}"
-                        th:text="$(tag.name}"
+                        th:text="${tag.name}"
                 ></option>
             </select>
 
         </div>
-        <input class="btn btn-success" type="submit" value="submit">
+        <input class="btn btn-success" type="submit" value="Add Tag">
     </form>
 
 </body>

@@ -125,7 +125,7 @@ public class EventController {
         eventTag.setEvent(event);
         model.addAttribute("eventTag", eventTag);
 
-        return "events/add-tag.html";
+        return "events/add-tag";
     }
 
     @PostMapping ("add-tag")

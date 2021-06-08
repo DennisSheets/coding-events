@@ -28,7 +28,6 @@ public class EventTagDTO {
         return tag;
     }
 
-    public void setTag(Tag tag) {
-        this.tag = tag;
+    public void setTag(Tag tag) { this.tag = tag;
     }
 }

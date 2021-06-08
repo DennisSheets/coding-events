@@ -10,8 +10,8 @@ import java.util.List;
 @Entity
 public class Tag extends AbstractEntity{
 
-    @Size(min=1, max=25,message = "must be between 1 and 25 characters")
-    @NotBlank(message="name is required")
+    @Size(min=1, max=25)
+    @NotBlank
     private String name;
 
     @ManyToMany(mappedBy = "tags")
@@ -35,7 +35,5 @@ public class Tag extends AbstractEntity{
         this.name = name;
     }
 
-    public List<Event> getEvents() {
-        return events;
-    }
+    public List<Event> getEvents() {return events;}
 }

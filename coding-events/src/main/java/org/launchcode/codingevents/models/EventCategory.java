@@ -22,7 +22,6 @@ public class EventCategory extends AbstractEntity{
         this.name = name;
     }
 
-
     public EventCategory() { }
 
     public String getName() {
