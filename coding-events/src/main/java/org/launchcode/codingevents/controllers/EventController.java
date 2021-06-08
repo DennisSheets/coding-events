@@ -10,7 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.OneToMany;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -18,7 +21,8 @@ import java.util.Optional;
 @RequestMapping ("events")
 public class EventController {
 
-    // findAll, save, findById
+    @OneToMany(mappedBy = "eventCategory")
+    private final List<Event> events = new ArrayList<>();
 
     @Autowired
     private EventRepository eventRepository;
