@@ -43,6 +43,8 @@ public class Event extends AbstractEntity{
         return name;
     }
 
+
+
     public void addTag(Tag tag){
         this.tags.add(tag);
     }

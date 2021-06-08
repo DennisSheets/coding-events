@@ -11,13 +11,15 @@
         </tr>
         <tr>
             <th>Description</th>
-            <th th:text="${event.eventDetails.description"#></th>
+            <th th:text="${event.eventDetails.description}"#></th>
         </tr>
         <tr>
             <th>Contact Email</th>
-            <th th:text="${event.eventDetails.contactEmail"#></th>
+            <th th:text="${event.eventDetails.contactEmail}"#></th>
         </tr>
     </table>
+
+    <a th:href="'/events/add-tag?eventId=' + ${event.id}">Add Tag</a>
 
     </body>
 </html>

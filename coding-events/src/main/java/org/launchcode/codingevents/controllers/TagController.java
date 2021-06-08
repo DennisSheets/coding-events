@@ -35,7 +35,8 @@ public class TagController {
     }
 
     @PostMapping ("create")
-    public String processCreateTagForm (@ModelAttribute @Valid Tag tag, Errors errors, Model model) {
+    public String processCreateTagForm (@ModelAttribute @Valid Tag tag,
+                                        Errors errors, Model model) {
         if (errors.hasErrors()){
             model.addAttribute("title", "Create Tag -fix errors");
             model.addAttribute(tag);
