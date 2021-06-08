@@ -15,13 +15,16 @@ public class EventDetails extends AbstractEntity{
     @NotBlank(message = "Contact email must not be blank")
     private String contactEmail;
 
-    public EventDetails(String description, String contactEmail) {
+    public EventDetails(@Size(max=500, message="Description is too long")
+                        String description,
+                        @NotBlank (message="Email is Required")
+                        @Email (message = "InValid Email!")
+                        String contactEmail) {
         this.description = description;
         this.contactEmail = contactEmail;
     }
 
     public EventDetails() {}
-
 
     public String getDescription() {
         return description;

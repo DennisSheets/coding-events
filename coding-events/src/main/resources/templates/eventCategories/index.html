@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body class="container">
-<header th:replace ="fragments :: header"></header>
+    <body class="container">
+    <header th:replace ="fragments :: header"></header>
 
-<p th:unless="${categories} and ${categories.size()}">No categories!</p>
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>id</th>
-        <th>Name</th>
-    </tr>
-    </thead>
+        <p th:unless="${categories} and ${categories.size()}">No categories!</p>
 
-    <tr th:each = "category: ${categories}">
-        <td th:text = "${category.id}"></td>
-        <!-- <td th:text = "${category.name}"></td> -->
-        <td><a th:text = "${category.name}"
-               th:href="'/events?categoryId=' + ${category.id}"></a></td>
+        <table class="table table-striped">
 
-    </tr>
-</table>
-</body>
+            <thead>
+                <tr>
+                    <th> Category</th>
+                </tr>
+            </thead>
+
+            <tr th:each = "category: ${categories}">
+                <!-- <td th:text = "${category.name}"></td> -->
+                <td><a th:text = "${category.name}" th:href="'/events?categoryId=' + ${category.id}"></a></td>
+            </tr>
+
+        </table>
+
+    </body>
+
 </html>
