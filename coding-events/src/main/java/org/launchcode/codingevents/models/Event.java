@@ -1,95 +1,58 @@
 package org.launchcode.codingevents.models;
-
-import javax.validation.constraints.Email;
+import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Event {
+@Entity //Entity & Persistent Class  --- event objects can be stored outside the pro in a db
+public class Event extends AbstractEntity{
 
     @Size(min=3, max=50, message = "Name needs to be between 3 and 50 characters.")
     @NotBlank (message = "Name field must not be blank")
     private String name;
 
-    @Size(max=500, message = "Description is too long.")
-    private String description;
+    @OneToOne (cascade = CascadeType.ALL)
+    @Valid
+    @NotNull
+    private EventDetails eventDetails;
 
-    @Email( message = "Invalid email. Try again.")
-    @NotBlank (message = "Contact email must not be blank")
-    private String contactEmail;
+    @ManyToOne
+    @NotNull (message="Category is required")
+    private EventCategory eventCategory;
 
-    private EventType type;
+    @ManyToMany
+    private final List<Tag> tags = new ArrayList<>();
 
-    private int id;
-    private static int nextId = 1;
 
-    public Event(String name, String description,String contactEmail,EventType type) {
-        this();
+    public Event(String name,EventCategory eventCategory) {
         this.name = name;
-        this.description = description;
-        this.contactEmail = contactEmail;
-        this.type = type;
+        this.eventCategory = eventCategory;
 
     }
 
-    public Event() {
-        this.id = nextId;
-        nextId++;
-    }
+    public Event() { }
 
     @Override
-    public String toString() {
-        return name;
-    }
+    public String toString() { return name; }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public List<Tag> getTags() { return tags;}
+    public void addTag(Tag tag){ this.tags.add(tag); }
 
 
-    public String getContactEmail() {
-        return contactEmail;
-    }
+    public String getName() {return name;}
+    public void setName(String name) {this.name = name;}
 
-    public void setContactEmail(String contactEmail) {
-        this.contactEmail = contactEmail;
-    }
+    public EventCategory getEventCategory() {return eventCategory;}
+    public void setEventCategory(EventCategory eventCategory) {
+        this.eventCategory = eventCategory;}
 
-    public EventType getType() {
-        return type;
-    }
-
-    public void setType(EventType type) {
-        this.type = type;
-    }
-
-    public int getId() {
-        return id;
+    public EventDetails getEventDetails() {return eventDetails;}
+    public void setEventDetails(EventDetails eventDetails) {
+        this.eventDetails = eventDetails;
     }
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Event event = (Event) o;
-        return id == event.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
