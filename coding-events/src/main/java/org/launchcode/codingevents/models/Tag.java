@@ -11,6 +11,7 @@ import java.util.List;
 public class Tag extends AbstractEntity{
 
     @Size(min=1, max=25)
+
     @NotBlank
     private String name;
 

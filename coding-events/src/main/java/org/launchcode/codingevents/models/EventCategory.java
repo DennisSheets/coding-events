@@ -1,9 +1,5 @@
 package org.launchcode.codingevents.models;
-
 import javax.persistence.Entity;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
